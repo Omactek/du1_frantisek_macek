@@ -30,18 +30,29 @@ if p_pol % 2 == 0: #pro sudý počet polí
         while x > horizontalni or x < 1:
             print("Špatný vstup")
             x = int(input(f"První hráči, zadejte souřadnici x od 1 do {horizontalni}"))
+        x = x - 1
         y = int(input(f"První hráči, zadejte souřadnici y od 1 do {vertikalni}"))
-        while y > horizontalni or x < 1:
+        while y > horizontalni or y < 1:
             print("Špatný vstup")
             y = int(input(f"První hráči, zadejte souřadnici y od 1 do {vertikalni}"))
+        y = y - 1
+        
+        #vykresleni krizku
+        sourad_y = y + (x*0.5)
         up()
-        setposition((strana+strana*0.5)*x,d*y)
+        setposition(strana*x*1.5,d*sourad_y)
         down()
         left(60)
         forward(2*strana)
-        setposition(strana*(x+1),d*y)
+        up()
+        setposition(strana*x*1.5,d*(sourad_y+1))
+        down()
         right(120)
         forward(2*strana)
+        left(60)
+
+        #vykresleni kolecka
+        
 
 
 exitonclick()
