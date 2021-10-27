@@ -23,17 +23,25 @@ for i in range(vertikalni):
         forward(strana)
         right(60)
 
-
-if (p_pol % 2) == 0:
-    for _ in range(p_pol/2):
+#hra
+if p_pol % 2 == 0: #pro sudý počet polí
+    for _ in range(int(p_pol/2)):
         x = int(input(f"První hráči, zadejte souřadnici x od 1 do {horizontalni}"))
         while x > horizontalni or x < 1:
             print("Špatný vstup")
             x = int(input(f"První hráči, zadejte souřadnici x od 1 do {horizontalni}"))
         y = int(input(f"První hráči, zadejte souřadnici y od 1 do {vertikalni}"))
-        while x > horizontalni or x < 1:
+        while y > horizontalni or x < 1:
             print("Špatný vstup")
-            x = int(input(f"První hráči, zadejte souřadnici y od 1 do {vertikalni}"))
+            y = int(input(f"První hráči, zadejte souřadnici y od 1 do {vertikalni}"))
+        up()
+        setposition((strana+strana*0.5)*x,d*y)
+        down()
+        left(60)
+        forward(2*strana)
+        setposition(strana*(x+1),d*y)
+        right(120)
+        forward(2*strana)
 
 
 exitonclick()
