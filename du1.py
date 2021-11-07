@@ -1,8 +1,19 @@
-from turtle import *
+from turtle import left,right,up,down,setposition,circle,color,width,speed,forward,exitonclick
 from math import sqrt
 
+def wrong_input():
+    print("Špatný vstup")
+
 vertikalni = int(input("Zadejte vertikalni počet polí: "))
+while vertikalni < 1:
+    wrong_input()
+    vertikalni = int(input("Zadejte vertikalni počet polí: "))
+
 horizontalni = int(input("Zadejte horizontální počet polí: "))
+while horizontalni < 1:
+    wrong_input()
+    horizontalni = int(input("Zadejte horizontální počet polí: "))
+
 strana = 20
 p_pol = horizontalni*vertikalni #počet polí
 speed(0)
@@ -23,17 +34,16 @@ for i in range(vertikalni):
 
 #hra
 width(2)
-v = 1 #proměnná pro opakování
-while v <= p_pol: #opakuje dokud není počet zahrání stejný jako počet polí
-    if v % 2 != 0: #pro prvního hráče
+for v in range(p_pol): #opakuje dokud není počet zahrání stejný jako počet polí
+    if v % 2 == 0: #pro prvního hráče
         x = int(input(f"První hráči, zadejte souřadnici x od 1 do {horizontalni}: "))
         while x > horizontalni or x < 1: #zabraňuje vstupu mimo pole
-            print("Špatný vstup")
+            wrong_input()
             x = int(input(f"První hráči, zadejte souřadnici x od 1 do {horizontalni}: "))
         x = x - 1 #převod na souřadnice, které používá turtle
         y = int(input(f"První hráči, zadejte souřadnici y od 1 do {vertikalni}: "))
         while y > vertikalni or y < 1: #zabraňuje vstupu mimo pole
-            print("Špatný vstup")
+            wrong_input()
             y = int(input(f"První hráči, zadejte souřadnici y od 1 do {vertikalni}: "))
         y = y - 1 #převod na souřadnice, které používá turtle
             
@@ -55,12 +65,12 @@ while v <= p_pol: #opakuje dokud není počet zahrání stejný jako počet pol�
     else:  #pro druhého hráče
         x = int(input(f"Druhý hráči, zadejte souřadnici x od 1 do {horizontalni}: "))
         while x > horizontalni or x < 1:
-            print("Špatný vstup")
+            wrong_input()
             x = int(input(f"Druhý hráči, zadejte souřadnici x od 1 do {horizontalni}: "))
         x = x - 1
         y = int(input(f"Druhý hráči, zadejte souřadnici y od 1 do {vertikalni}: "))
         while y > vertikalni or y < 1:
-            print("Špatný vstup")
+            wrong_input()
             y = int(input(f"Druhý hráči, zadejte souřadnici y od 1 do {vertikalni}: "))
         y = y - 1   
 
@@ -71,7 +81,6 @@ while v <= p_pol: #opakuje dokud není počet zahrání stejný jako počet pol�
         setposition(strana*x*1.5+(strana*0.5),d*sourad_y+(d*0.2))
         down()
         circle(d*0.3)
-    v += 1 #po provedení zápisu zvětší proměnnou o 1 
 
 print("Hra skončila")
 
